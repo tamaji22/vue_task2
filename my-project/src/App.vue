@@ -2,17 +2,20 @@
   <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
   <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
   <BasicInfo/>
+  <!-- <QuestionnaireInput/> -->
 </template>
 
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
 import BasicInfo from './components/BasicInfo.vue'
+// import QuestionnaireInput from './components/QuestionnaireInput.vue'
 
 export default {
   name: 'App',
   components: {
     // HelloWorld
-    BasicInfo
+    BasicInfo,
+    // QuestionnaireInput
   }
 }
 </script>

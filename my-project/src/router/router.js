@@ -1,17 +1,23 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "../views/Home.vue";
+import BasicInfo from '../components/BasicInfo.vue';
 
 const routes = [
   {
     path: "/",
-    name: "Home",
-    component: Home
+    name: "BasicInfo",
+    component: BasicInfo
   },
   {
-    path: "/about",
-    name: "About",
+    path: "/page2",
+    name: "QuestionnaireInput",
     component: () =>
-      import("../views/About.vue")
+      import("../components/QuestionnaireInput.vue")
+  },
+  {
+    path: "/page3",
+    name: "ConsultationForm",
+    component: () =>
+      import("../components/ConsultationForm.vue")
   }
 ];
 

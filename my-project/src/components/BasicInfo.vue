@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div>
     <div>
       <p>STEP1</p>
       <p>お客様の情報を入力してください</p>
@@ -25,7 +25,7 @@
       日
     </div>
     <div>
-      <button>次へ進む</button>
+      <button @click="nextPage">次へ進む</button>
     </div>
   </div>
 </template>
@@ -56,6 +56,11 @@ export default {
           }
         }
       }
+    }
+  },
+  methods: {
+    nextPage: function() {
+      this.$router.push('/page2');
     }
   },
 }

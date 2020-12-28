@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div>
     <div>
       <p>STEP2</p>
       <p>以下にお答えください</p>
@@ -20,8 +20,8 @@
       <input type="radio" name="hospitalization" value="false">いいえ
     </div>
     <div>
-      <button>前へ戻る</button>
-      <button>次へ進む</button>
+      <button @click="previousPage">前へ戻る</button>
+      <button @click="nextPage">次へ進む</button>
     </div>
   </div>
 </template>
@@ -33,6 +33,14 @@ export default {
     return {
       answer1: null,
       answer2: null
+    }
+  },
+  methods: {
+    previousPage: function() {
+      this.$router.push('/');
+    },
+    nextPage: function() {
+      this.$router.push('/page3');
     }
   }
 }

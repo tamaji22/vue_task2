@@ -20,7 +20,7 @@
             <p class="has-text-info mb-2">-生年月日-</p>
             <div class="select">
               <select name="year">
-                <option v-for="i in 100" :key="i" value="year + i">{{ year + i }}年{{ wareki(year + i) }}</option>
+                <option v-for="i in 100" :key="i" value="year[i - 1]">{{ year[i - 1] }}年{{ wareki[i - 1] }}</option>
               </select>
             </div>
             <div class="is-inline-block pt-2 pl-1 pr-3">年</div>
@@ -47,31 +47,14 @@
 </template>
 
 <script>
+import {year, wareki} from '../definition';
+
 export default {
   name: 'BasicInfo',
   data() {
     return {
-      year: new Date().getFullYear() - 100, // 現在から100年前を基準とする
-      eraName: [ // 元号判定用
-        { gengou: '明治', start: 1868, end: 1912 },
-        { gengou: '大正', start: 1912, end: 1926 },
-        { gengou: '昭和', start: 1926, end: 1989 },
-        { gengou: '平成', start: 1989, end: 2019 },
-        { gengou: '令和', start: 2019, end: 9999 },
-      ],
-    }
-  },
-  computed: {
-    // 西暦を元号に変換する
-    wareki: function() {
-      return function (year) {
-        for(let i = 0; i < this.eraName.length; i++) {
-          if(this.eraName[i].start <= year && year < this.eraName[i].end) {
-            const warekiYear = year - this.eraName[i].start + 1;
-              return `(${ this.eraName[i].gengou }${warekiYear})`;
-          }
-        }
-      }
+      year: year,
+      wareki: wareki,
     }
   },
   methods: {

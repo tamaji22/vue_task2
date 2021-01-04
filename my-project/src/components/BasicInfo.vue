@@ -10,29 +10,29 @@
           <p class="has-text-info mb-2">-性別-</p>
           <div class="control">
             <label class="radio">
-              <input type="radio" name="gender" value="male"><div class="is-inline-block ml-1">男性</div>
+              <input type="radio" name="gender" value="male" v-model="gender"><div class="is-inline-block ml-1">男性</div>
             </label>
             <label class="radio">
-              <input type="radio" name="gender" value="female"><div class="is-inline-block ml-1">女性</div>
+              <input type="radio" name="gender" value="female" v-model="gender"><div class="is-inline-block ml-1">女性</div>
             </label>
           </div>
           <div class="mt-5 mb-3">
             <p class="has-text-info mb-2">-生年月日-</p>
             <div class="select">
-              <select name="year">
-                <option v-for="i in 100" :key="i" value="year[i - 1]">{{ year[i - 1] }}年{{ wareki[i - 1] }}</option>
+              <select name="year" v-model="stateYear">
+                <option v-for="i in 100" :key="i" :value="year[i - 1]">{{ year[i - 1] }}年{{ wareki[i - 1] }}</option>
               </select>
             </div>
             <div class="is-inline-block pt-2 pl-1 pr-3">年</div>
             <div class="select">
-              <select name="month">
-                <option v-for="i in 12" :key="i" value="i">{{ i }}</option>
+              <select name="month" v-model="month">
+                <option v-for="i in 12" :key="i" :value="i">{{ i }}</option>
               </select>
             </div>
             <div class="is-inline-block pt-2 pl-1 pr-3">月</div>
             <div class="select">
-              <select name="day">
-                <option v-for="i in 31" :key="i" value="i">{{ i }}</option>
+              <select name="day" v-model="day">
+                <option v-for="i in 31" :key="i" :value="i">{{ i }}</option>
               </select>
             </div>
             <div class="is-inline-block pt-2 pl-1">日</div>
@@ -55,6 +55,40 @@ export default {
     return {
       year: year,
       wareki: wareki,
+    }
+  },
+  computed:{
+    gender: {
+      get() {
+        return this.$store.state.gender;
+      },
+      set(value) {
+        this.$store.commit('setGender', value);
+      }
+    },
+    stateYear: {
+      get() {
+        return this.$store.state.year;
+      },
+      set(value) {
+        this.$store.commit('setYear', value);
+      }
+    },
+    month: {
+      get() {
+        return this.$store.state.month;
+      },
+      set(value) {
+        this.$store.commit('setMonth', value);
+      }
+    },
+    day: {
+      get() {
+        return this.$store.state.day;
+      },
+      set(value) {
+        this.$store.commit('setDay', value);
+      }
     }
   },
   methods: {

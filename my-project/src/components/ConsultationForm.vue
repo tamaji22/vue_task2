@@ -8,13 +8,13 @@
         </div>
         <div class="card-content">
           <p class="has-text-info mb-5">-ご相談内容-</p>
-          <textarea class="textarea" name="consulatation" cols="100" rows="15"></textarea>
+          <textarea class="textarea" v-model="consultation" name="consultation" cols="100" rows="15"></textarea>
         </div>
       </div>
       <div class="columns">
         <div class="column buttons has-text-centered mt-6">
           <button class="button is-primary" @click="previousPage">前へ戻る<font-awesome-icon icon="angle-right" class="ml-3"/></button>
-          <button class="button is-primary">次へ進む<font-awesome-icon icon="angle-right" class="ml-3"/></button>
+          <button class="button is-primary" @click="nextPage">次へ進む<font-awesome-icon icon="angle-right" class="ml-3"/></button>
         </div>
       </div>
     </div>
@@ -24,9 +24,22 @@
 <script>
 export default {
   name: 'ConsultationForm',
+  computed: {
+    consultation: {
+      get() {
+        return this.$store.state.consultation;
+      },
+      set(value) {
+        this.$store.commit('setConsultation', value);
+      }
+    }
+  },
   methods: {
     previousPage: function() {
       this.$router.push('/page2');
+    },
+    nextPage: function() {
+      this.$router.push('/page4');
     }
   }
 }

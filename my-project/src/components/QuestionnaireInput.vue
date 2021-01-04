@@ -10,31 +10,31 @@
           <p class="has-text-info mb-3">現在、生命保険に加入されていますか？</p>
           <div class="control">
             <label class="radio ml-5">
-              <input type="radio" v-model="answer1" name="insurance" value="true"><div class="is-inline-block ml-1">はい</div>
+              <input type="radio" v-model="insurance" name="insurance" value="true"><div class="is-inline-block ml-1">はい</div>
             </label>
             <label class="radio">
-              <input type="radio" v-model="answer1" name="insurance" value="false"><div class="is-inline-block ml-1">いいえ</div>
+              <input type="radio" v-model="insurance" name="insurance" value="false"><div class="is-inline-block ml-1">いいえ</div>
             </label>
           </div>
-          <div v-if="answer1 !== null">
+          <div v-if="insurance !== null">
             <p class="has-text-info mb-3 mt-3">現在入院中ですか。または、最近3ヶ月以内に医師の診察・検査の結果、入院・手術をすすめられたことはありますか？</p>
             <div class="control">
               <label class="radio ml-5">
-                <input type="radio" v-model="answer2" name="medical" value="true"><div class="is-inline-block ml-1">はい</div>
+                <input type="radio" v-model="medical" name="medical" value="true"><div class="is-inline-block ml-1">はい</div>
               </label>
               <label class="radio">
-                <input type="radio" v-model="answer2" name="medical" value="false"><div class="is-inline-block ml-1">いいえ</div>
+                <input type="radio" v-model="medical" name="medical" value="false"><div class="is-inline-block ml-1">いいえ</div>
               </label>
             </div>
           </div>
-          <div v-if="answer2 !== null">
+          <div v-if="medical !== null">
             <p class="has-text-info mb-3 mt-3">過去5年以内に、病気やけがで、手術をうけたことまたは継続して7日以上の入院をしたことがありますか？</p>
             <div class="control">
               <label class="radio ml-5">
-                <input type="radio" name="hospitalization" value="true"><div class="is-inline-block ml-1">はい</div>
+                <input type="radio" v-model="hospitalization" name="hospitalization" value="true"><div class="is-inline-block ml-1">はい</div>
               </label>
               <label class="radio">
-                <input type="radio" name="hospitalization" value="false"><div class="is-inline-block ml-1">いいえ</div>
+                <input type="radio" v-model="hospitalization" name="hospitalization" value="false"><div class="is-inline-block ml-1">いいえ</div>
               </label>
             </div>
           </div>
@@ -53,10 +53,30 @@
 <script>
 export default {
   name: 'QuestionnaireInput',
-  data() {
-    return {
-      answer1: null,
-      answer2: null
+  computed: {
+    insurance: {
+      get() {
+        return this.$store.state.insurance;
+      },
+      set(value) {
+        this.$store.commit('setInsurance', value);
+      }
+    },
+    medical: {
+      get() {
+        return this.$store.state.medical;
+      },
+      set(value) {
+        this.$store.commit('setMedical', value);
+      }
+    },
+    hospitalization: {
+      get() {
+        return this.$store.state.hospitalization;
+      },
+      set(value) {
+        this.$store.commit('setHospitalization', value);
+      }
     }
   },
   methods: {

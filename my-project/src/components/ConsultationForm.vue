@@ -27,7 +27,7 @@ export default {
   computed: {
     consultation: {
       get() {
-        return this.$store.state.consultation;
+        return this.$store.getters.getConsultation;
       },
       set(value) {
         this.$store.commit('setConsultation', value);

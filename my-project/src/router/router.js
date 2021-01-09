@@ -18,7 +18,13 @@ const routes = [
     name: "ConsultationForm",
     component: () =>
       import("../components/ConsultationForm.vue")
-  }
+  },
+  {
+    path: "/page4",
+    name: "Confirmation",
+    component: () =>
+      import("../components/Confirmation.vue")
+  },
 ];
 
 const router = createRouter({
